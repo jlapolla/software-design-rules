@@ -1,0 +1,22 @@
+/**
+ * Based on https://github.com/twbs/bootstrap/blob/v4-dev/scss/_badge.scss
+ */
+
+.badge {
+  display: inline-block;
+  padding: $badge-padding-y $badge-padding-x;
+  font-size: $badge-font-size;
+  font-weight: $badge-font-weight;
+  line-height: 1;
+  color: $badge-fg;
+  background-color: $badge-bg;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 1em;
+
+  // Empty tags collapse automatically
+  &:empty {
+    display: none;
+  }
+}

@@ -15,3 +15,15 @@ github_username:  jlapolla
 
 # Build settings
 markdown: kramdown
+
+collections:
+  rules:
+    output: true
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: rules
+    values:
+      layout: "rule"

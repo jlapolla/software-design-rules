@@ -170,9 +170,9 @@ blockquote {
     color: contrast-low($fg);
     border-left: 4px solid $color-highlight-base;
     padding-left: $spacing-unit / 2;
-    font-size: 18px;
+    font-size: 1.25rem;
+    font-family: $font-family-monospace;
     letter-spacing: -1px;
-    font-style: italic;
 
     > :last-child {
         margin-bottom: 0;

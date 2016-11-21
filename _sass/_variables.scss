@@ -1,0 +1,79 @@
+/**
+ * Colors
+ */
+
+// Color properties
+$hue-heading: 36 !default;
+$hue-highlight: 94 !default;
+$hue-link: 196 !default;
+$saturation-base: 100% !default;
+
+// Base colors
+$color-heading-base: hsl($hue-heading, $saturation-base, 50%);
+$color-highlight-base: hsl($hue-highlight, $saturation-base, 50%);
+$color-link-base: hsl($hue-link, $saturation-base, 50%);
+
+// Set to 'true' for themes with a dark background and light foreground. This
+// affects the definition of contrast increases and decreases. You still need
+// to manually change your background and foreground colors.
+$dark-bg: true !default;
+@function contrast-inc($color, $percent) { @return if($dark-bg, lighten($color, $percent), darken($color, $percent)) }
+@function contrast-dec($color, $percent) { @return if($dark-bg, darken($color, $percent), lighten($color, $percent)) }
+
+// Preset contrast levels
+@function contrast-higher($color) { @return contrast-inc($color, 30%); }
+@function contrast-high($color) { @return contrast-inc($color, 15%); }
+@function contrast-normal($color) { @return $color; }
+@function contrast-low($color) { @return contrast-dec($color, 15%); }
+@function contrast-lower($color) { @return contrast-dec($color, 30%); }
+
+/**
+ * Spacing
+ */
+
+$spacer: 1rem !default;
+
+/**
+ * Body
+ */
+
+$bg: #000;
+$fg: #f2f2f2;
+
+/**
+ * Links
+ */
+
+$link-color: $color-link-base !default;
+$link-decoration: none !default;
+$link-visited-color: contrast-low($link-color) !default;
+$link-hover-decoration: underline !default;
+
+/**
+ * Fonts
+ */
+
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
+$font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:       $font-family-sans-serif !default;
+
+// Pixel value used for all typography scaling. Applied to the '<html>'
+// element.
+$font-size-root: 16px !default;
+
+$font-size-base: 1rem !default;
+$font-size-sm: 0.875rem !default;
+
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
+
+$font-weight-base: $font-weight-normal !default;
+$line-height-base: 1.5 !default;
+
+$font-size-h1: 2.5rem !default;
+$font-size-h2: 2rem !default;
+$font-size-h3: 1.75rem !default;
+$font-size-h4: 1.5rem !default;
+$font-size-h5: 1.25rem !default;
+$font-size-h6: 1rem !default;

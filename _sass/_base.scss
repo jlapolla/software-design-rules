@@ -1,4 +1,36 @@
 /**
+ * Selections from https://github.com/twbs/bootstrap/blob/v4-dev/scss/_reboot.scss
+ */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing:inherit;
+}
+
+@at-root {
+  @-ms-viewport {
+    width: device-width;
+  }
+}
+
+html {
+  font-size: $font-size-root;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
+
+
+/**
  * Reset some basic elements
  */
 body, h1, h2, h3, h4, h5, h6,
@@ -14,9 +46,9 @@ dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
-    color: $text-color;
-    background-color: $background-color;
+    font: $font-weight-normal #{$font-size-base}/#{$line-height-base} $font-family-base;
+    color: $fg;
+    background-color: contrast-high($bg);
     -webkit-text-size-adjust: 100%;
     -webkit-font-feature-settings: "kern" 1;
     -moz-font-feature-settings: "kern" 1;
@@ -57,7 +89,7 @@ figure > img {
 }
 
 figcaption {
-    font-size: $small-font-size;
+    font-size: $font-size-sm;
 }
 
 
@@ -82,7 +114,33 @@ li {
  * Headings
  */
 h1, h2, h3, h4, h5, h6 {
-    font-weight: $base-font-weight;
+    color: $color-heading-base;
+    font-family: $font-family-monospace;
+    font-weight: $font-weight-normal;
+}
+
+h1 {
+  font-size: $font-size-h1;
+}
+
+h2 {
+  font-size: $font-size-h2;
+}
+
+h3 {
+  font-size: $font-size-h3;
+}
+
+h4 {
+  font-size: $font-size-h4;
+}
+
+h5 {
+  font-size: $font-size-h5;
+}
+
+h6 {
+  font-size: $font-size-h6;
 }
 
 
@@ -91,16 +149,15 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-    color: $brand-color;
-    text-decoration: none;
+    color: $link-color;
+    text-decoration: $link-decoration;
 
     &:visited {
-        color: darken($brand-color, 15%);
+        color: $link-visited-color;
     }
 
     &:hover {
-        color: $text-color;
-        text-decoration: underline;
+        text-decoration: $link-hover-decoration;
     }
 }
 
@@ -110,8 +167,8 @@ a {
  * Blockquotes
  */
 blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
+    color: contrast-low($fg);
+    border-left: 4px solid $color-highlight-base;
     padding-left: $spacing-unit / 2;
     font-size: 18px;
     letter-spacing: -1px;
@@ -130,9 +187,9 @@ blockquote {
 pre,
 code {
     font-size: 15px;
-    border: 1px solid $grey-color-light;
+    border: 1px solid contrast-higher($bg);
     border-radius: 3px;
-    background-color: #eef;
+    background-color: contrast-high($bg);
 }
 
 code {
@@ -200,7 +257,7 @@ pre {
         vertical-align: middle;
 
         path {
-            fill: $grey-color;
+            fill: contrast-low($fg);
         }
     }
 }

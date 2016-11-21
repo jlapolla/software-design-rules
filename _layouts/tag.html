@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1>{{ page.tagname }}</h1>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    {% for rule in site.rules %}
+      {% assign match = false %}
+      {% for tag in rule.tags %}
+        {% if tag == page.tagname %}
+          {% assign match = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% if match %}
+      <p class="post-meta"><a href="{{ site.baseurl | append: rule.url }}">{{ rule.uuid }}</a></p>
+      <blockquote><p>{{ rule.snippet }}</p></blockquote>
+      <ul class="undercover">
+        {% for tag in rule.tags %}
+        <li><a href="{{ site.baseurl | append: "/tags/" | append: tag | append: ".html" }}" class="undercover"><span class="badge">{{ tag }}</span></a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+</article>

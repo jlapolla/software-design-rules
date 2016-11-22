@@ -265,13 +265,17 @@ pre {
 /**
  * Wrapper
  */
+.wrapper-static {
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+}
+
 .wrapper {
+    @extend .wrapper-static;
     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
     max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
     margin-right: auto;
     margin-left: auto;
-    padding-right: $spacing-unit;
-    padding-left: $spacing-unit;
     @extend %clearfix;
 
     @include media-query($on-laptop) {
@@ -294,6 +298,21 @@ pre {
         display: table;
         clear: both;
     }
+}
+
+
+
+/**
+ * Static layout
+ */
+
+.static-container {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.dynamic-container {
+  white-space: normal;
 }
 
 

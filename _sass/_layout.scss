@@ -1,22 +1,25 @@
 /**
  * Site header
  */
-.site-header {
+.site-header-static {
     border-top: 5px solid $color-highlight-base;
     border-bottom: 1px solid contrast-lower($color-heading-base);
     min-height: 56px;
+}
+
+.site-header {
+    @extend .site-header-static;
 
     // Positioning context for the mobile navigation icon
     position: relative;
 }
 
-.site-title {
+.site-title-common {
     font-size: 26px;
     font-weight: 300;
     line-height: 56px;
     letter-spacing: -1px;
     margin-bottom: 0;
-    float: left;
 
     &,
     &:visited {
@@ -24,13 +27,18 @@
     }
 }
 
-.site-nav {
-    float: right;
-    line-height: 56px;
+.site-title-static {
+    @extend .site-title-common;
+    margin-right: $spacing-unit * 2;
+}
 
-    .menu-icon {
-        display: none;
-    }
+.site-title {
+    @extend .site-title-common;
+    float: left;
+}
+
+.site-nav-common {
+    line-height: 56px;
 
     .page-link {
         color: contrast-low($fg);
@@ -40,6 +48,20 @@
         &:not(:last-child) {
             margin-right: 20px;
         }
+    }
+}
+
+.site-nav-static {
+  @extend .site-nav-common;
+  display: inline-block;
+}
+
+.site-nav {
+    @extend .site-nav-common;
+    float: right;
+
+    .menu-icon {
+        display: none;
     }
 
     @include media-query($on-palm) {

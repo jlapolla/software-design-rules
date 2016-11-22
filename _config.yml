@@ -18,12 +18,21 @@ github_project: software-design-rules
 markdown: kramdown
 
 collections:
+  code_samples:
+    output: true
   rules:
     output: true
   my_tags:
     output: true
 
 defaults:
+  -
+    scope:
+      path: ""
+      type: code_samples
+    values:
+      layout: "code-sample"
+      permalink: /code-samples/:path/
   -
     scope:
       path: ""

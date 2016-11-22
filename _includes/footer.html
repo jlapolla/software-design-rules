@@ -9,7 +9,11 @@
         <ul class="social-media-list">
           {% if site.github_username %}
           <li>
-            {% include icon-github.html username=site.github_username %}
+            {% if site.github_project %}
+              {% include icon-github-project.html username=site.github_username project=site.github_project %}
+            {% else %}
+              {% include icon-github.html username=site.github_username %}
+            {% endif %}
           </li>
           {% endif %}
 

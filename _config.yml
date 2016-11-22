@@ -8,7 +8,7 @@
 # Site settings
 title: Software Design Rules
 description: > # this means to ignore newlines until "baseurl:"
-  Apply these design rules to improve your code quality.
+  Design rules for effective software development.
 baseurl: "/software-design-rules" # the subpath of your site, e.g. /blog
 url: "https://jlapolla.github.io" # the base hostname & protocol for your site
 github_username:  jlapolla

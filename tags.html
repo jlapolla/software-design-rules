@@ -1,0 +1,15 @@
+---
+layout: page
+title: Tags
+permalink: /tags/
+---
+
+<ul class="undercover">
+  {% for tag in site.my_tags %}
+    <li>
+      <a href="{{ site.baseurl | append: tag.url }}" class="undercover">
+        <span class="badge">{{ tag.tagname }}</span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

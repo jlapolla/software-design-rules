@@ -19,7 +19,7 @@ markdown: kramdown
 collections:
   rules:
     output: true
-  tags:
+  my_tags:
     output: true
 
 defaults:
@@ -33,7 +33,7 @@ defaults:
   -
     scope:
       path: ""
-      type: tags
+      type: my_tags
     values:
       layout: "tag"
-      permalink: /:collection/:path/
+      permalink: /tags/:path/

@@ -6,7 +6,7 @@ layout: default
   <header class="post-header">
     <p class="post-meta">{{ page.uuid }}</p>
     <blockquote><p>{{ page.snippet }}</p></blockquote>
-    <ul class="undercover">
+    <ul class="undercover inline">
       {% assign sorted_tags = page.tags | sort %}
       {% for tag in sorted_tags %}
       <li><a href="{{ site.baseurl | append: "/tags/" | append: tag | append: "/" }}" class="undercover"><span class="badge">{{ tag }}</span></a></li>

@@ -1,0 +1,20 @@
+---
+layout: page
+title: Rules
+permalink: /rules/
+---
+
+<ul class="undercover separator">
+  {% for rule in site.rules %}
+    <li>
+      <p class="post-meta"><a href="{{ site.baseurl | append: rule.url }}">{{ rule.uuid }}</a></p>
+      <blockquote><p>{{ rule.snippet }}</p></blockquote>
+      <ul class="undercover inline">
+        {% assign sorted_tags = rule.tags | sort %}
+        {% for tag in sorted_tags %}
+          <li><a href="{{ site.baseurl | append: "/tags/" | append: tag | append: "/" }}" class="undercover"><span class="badge">{{ tag }}</span></a></li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>

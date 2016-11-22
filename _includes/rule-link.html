@@ -1,0 +1,1 @@
+{% assign rule = site.rules | where: "uuid", include.uuid | first %}{% if rule %}<a href="{{ site.baseurl | append: rule.url }}" title="{{ rule.snippet }}" class="tiny">{{ rule.uuid }}</a>{% else %}<a title="Broken link. Please report!" class="tiny broken">{{ include.uuid }}</a>{% endif %}

@@ -8,7 +8,7 @@ layout: default
     <blockquote><p>{{ page.snippet }}</p></blockquote>
     <ul class="undercover">
       {% for tag in page.tags %}
-      <li><a href="{{ site.baseurl | append: "/tags/" | append: tag | append: ".html" }}" class="undercover"><span class="badge">{{ tag }}</span></a></li>
+      <li><a href="{{ site.baseurl | append: "/tags/" | append: tag | append: "/" }}" class="undercover"><span class="badge">{{ tag }}</span></a></li>
       {% endfor %}
     </ul>
   </header>

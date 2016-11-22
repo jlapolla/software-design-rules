@@ -29,9 +29,11 @@ defaults:
       type: rules
     values:
       layout: "rule"
+      permalink: /:collection/:path/
   -
     scope:
       path: ""
       type: tags
     values:
       layout: "tag"
+      permalink: /:collection/:path/

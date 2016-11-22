@@ -21,7 +21,7 @@ layout: default
       <blockquote><p>{{ rule.snippet }}</p></blockquote>
       <ul class="undercover">
         {% for tag in rule.tags %}
-        <li><a href="{{ site.baseurl | append: "/tags/" | append: tag | append: ".html" }}" class="undercover"><span class="badge">{{ tag }}</span></a></li>
+        <li><a href="{{ site.baseurl | append: "/tags/" | append: tag | append: "/" }}" class="undercover"><span class="badge">{{ tag }}</span></a></li>
         {% endfor %}
       </ul>
       {% endif %}

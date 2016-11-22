@@ -124,6 +124,21 @@ ul.inline {
   }
 }
 
+ul.separator {
+  > li {
+    padding-top: $spacing-unit;
+    padding-bottom: $spacing-unit;
+    border-bottom: 1px solid contrast-lower($color-heading-base);
+  }
+  > li:first-child {
+    padding-top: 0;
+  }
+  > li:last-child {
+    padding-bottom: 0;
+    border-bottom-style: none;
+  }
+}
+
 
 
 /**

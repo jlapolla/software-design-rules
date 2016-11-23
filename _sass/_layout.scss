@@ -14,7 +14,7 @@
     position: relative;
 }
 
-.site-title-common {
+.site-title {
     font-size: 26px;
     font-weight: 300;
     line-height: 56px;
@@ -25,19 +25,11 @@
     &:visited {
         color: contrast-lower($fg);
     }
-}
-
-.site-title-static {
-    @extend .site-title-common;
-    margin-right: $spacing-unit * 2;
-}
-
-.site-title {
-    @extend .site-title-common;
     float: left;
 }
 
-.site-nav-common {
+.site-nav-static {
+    float: right;
     line-height: 56px;
 
     .page-link {
@@ -51,14 +43,8 @@
     }
 }
 
-.site-nav-static {
-  @extend .site-nav-common;
-  display: inline-block;
-}
-
 .site-nav {
-    @extend .site-nav-common;
-    float: right;
+    @extend .site-nav-static;
 
     .menu-icon {
         display: none;
@@ -135,58 +121,48 @@
     margin-left: 0;
 }
 
-.footer-col-wrapper-static {
+.footer-col-wrapper {
     font-size: 15px;
     color: contrast-lower($fg);
     margin-left: -$spacing-unit / 2;
-}
-
-.footer-col-wrapper {
-    @extend .footer-col-wrapper-static;
     @extend %clearfix;
 }
 
 .footer-col-static {
     margin-bottom: $spacing-unit / 2;
     padding-left: $spacing-unit / 2;
+    float: left;
 }
 
 .footer-col {
     @extend .footer-col-static;
-    float: left;
 }
 
-.footer-col-1 {
+.footer-col-1-static {
     width: -webkit-calc(35% - (#{$spacing-unit} / 2));
     width:         calc(35% - (#{$spacing-unit} / 2));
 }
 
-.footer-col-1-static {
-  @extend .dynamic-container;
-  width: (0.35 * ($content-width - $spacing-unit * 3.5)) - ($spacing-unit / 2);
-  display: inline-block;
+.footer-col-1 {
+    @extend .footer-col-1-static;
 }
 
-.footer-col-2 {
+.footer-col-2-static {
     width: -webkit-calc(20% - (#{$spacing-unit} / 2));
     width:         calc(20% - (#{$spacing-unit} / 2));
 }
 
-.footer-col-2-static {
-  @extend .dynamic-container;
-  width: (0.20 * ($content-width - $spacing-unit * 3.5)) - ($spacing-unit / 2);
-  display: inline-block;
+.footer-col-2 {
+    @extend .footer-col-2-static;
 }
 
-.footer-col-3 {
+.footer-col-3-static {
     width: -webkit-calc(45% - (#{$spacing-unit} / 2));
     width:         calc(45% - (#{$spacing-unit} / 2));
 }
 
-.footer-col-3-static {
-  @extend .dynamic-container;
-  width: (0.45 * ($content-width - $spacing-unit * 3.5)) - ($spacing-unit / 2);
-  display: inline-block;
+.footer-col-3 {
+    @extend .footer-col-3-static;
 }
 
 @include media-query($on-laptop) {

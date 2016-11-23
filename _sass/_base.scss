@@ -288,6 +288,7 @@ pre {
 .wrapper-static {
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
+    @extend %clearfix;
 }
 
 .wrapper {
@@ -296,7 +297,6 @@ pre {
     max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
     margin-right: auto;
     margin-left: auto;
-    @extend %clearfix;
 
     @include media-query($on-laptop) {
         max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
@@ -304,6 +304,11 @@ pre {
         padding-right: $spacing-unit / 2;
         padding-left: $spacing-unit / 2;
     }
+}
+
+.wrapper-fixed {
+    @extend .wrapper-static;
+    width: $content-width - $spacing-unit * 2;
 }
 
 
@@ -328,11 +333,6 @@ pre {
 
 .static-container {
   display: inline-block;
-  white-space: nowrap;
-}
-
-.dynamic-container {
-  white-space: normal;
 }
 
 

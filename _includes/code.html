@@ -1,7 +1,10 @@
 {% assign code = site.code_samples | where: "uuid", include.uuid | first %}
 {% if code %}
 {{ code.content }}
-<a href="{{ site.baseurl | append: code.url }}" class="tiny">View code</a>
+<a href="{{ site.baseurl | append: code.url }}" class="tiny">Expanded view</a>
 {% else %}
-<a title="Broken link. Please report!" class="tiny broken">View code</a>
+{% highlight c %}
+Broken code link. Please report!
+{% endhighlight %}
+<a title="Broken link. Please report!" class="tiny broken">Expanded view</a>
 {% endif %}

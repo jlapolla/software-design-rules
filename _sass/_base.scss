@@ -260,6 +260,26 @@ pre {
     }
 }
 
+.code-only {
+
+  > figure {
+
+    > pre {
+
+      border: medium none transparent;
+      background-color: transparent;
+      padding: 0;
+
+      > code {
+
+        border: medium none transparent;
+        background-color: transparent;
+        padding: 0;
+      }
+    }
+  }
+}
+
 
 
 /**

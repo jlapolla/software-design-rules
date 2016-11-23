@@ -33,6 +33,7 @@ defaults:
     values:
       layout: "code-sample"
       permalink: /code-samples/:path/
+      excerpt_separator: \{% endhighlight %\}
   -
     scope:
       path: ""

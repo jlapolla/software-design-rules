@@ -156,49 +156,37 @@
     float: left;
 }
 
-.footer-col-1-common {
+.footer-col-1 {
     width: -webkit-calc(35% - (#{$spacing-unit} / 2));
     width:         calc(35% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-1-static {
-  @extend .footer-col-1-common;
   @extend .dynamic-container;
+  width: (0.35 * ($content-width - $spacing-unit * 3.5)) - ($spacing-unit / 2);
   display: inline-block;
 }
 
-.footer-col-1 {
-    @extend .footer-col-1-common;
-}
-
-.footer-col-2-common {
+.footer-col-2 {
     width: -webkit-calc(20% - (#{$spacing-unit} / 2));
     width:         calc(20% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-2-static {
-  @extend .footer-col-2-common;
   @extend .dynamic-container;
+  width: (0.20 * ($content-width - $spacing-unit * 3.5)) - ($spacing-unit / 2);
   display: inline-block;
 }
 
-.footer-col-2 {
-    @extend .footer-col-2-common;
-}
-
-.footer-col-3-common {
+.footer-col-3 {
     width: -webkit-calc(45% - (#{$spacing-unit} / 2));
     width:         calc(45% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-3-static {
-  @extend .footer-col-3-common;
   @extend .dynamic-container;
+  width: (0.45 * ($content-width - $spacing-unit * 3.5)) - ($spacing-unit / 2);
   display: inline-block;
-}
-
-.footer-col-3 {
-    @extend .footer-col-3-common;
 }
 
 @include media-query($on-laptop) {

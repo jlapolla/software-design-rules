@@ -212,6 +212,10 @@ a.broken {
   &:hover {
     text-decoration: line-through;
   }
+
+  > .badge {
+    text-decoration: line-through;
+  }
 }
 
 

@@ -5,7 +5,8 @@ permalink: /tags/
 ---
 
 <ul class="undercover">
-  {% for tag in site.my_tags %}
+  {% assign all_tags = site.my_tags | sort: "tagname" %}
+  {% for tag in all_tags %}
     <li>
       <a href="{{ site.baseurl | append: tag.url }}" class="undercover">
         <span class="badge">{{ tag.tagname }}</span>

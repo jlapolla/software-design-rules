@@ -10,14 +10,7 @@ layout: default
   <div class="post-content">
     <ul class="undercover separator">
       {% for rule in site.rules %}
-        {% assign match = false %}
-        {% for tag in rule.tags %}
-          {% if tag == page.tagname %}
-            {% assign match = true %}
-            {% break %}
-          {% endif %}
-        {% endfor %}
-        {% if match %}
+        {% if rule.tags contains page.uuid %}
           <li>
             <p class="post-meta"><a href="{{ site.baseurl | append: rule.url }}">{{ rule.uuid }}</a></p>
             <blockquote><p>{{ rule.snippet }}</p></blockquote>

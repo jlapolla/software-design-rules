@@ -1,3 +1,0 @@
----
-tagname: enum
----

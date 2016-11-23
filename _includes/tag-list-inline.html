@@ -1,6 +1,15 @@
 <ul class="undercover inline">
-  {% assign sorted_tags = include.tags | sort %}
-  {% for tag in sorted_tags %}
-    <li><a href="{{ site.baseurl | append: "/tags/" | append: tag | append: "/" }}" class="undercover"><span class="badge">{{ tag }}</span></a></li>
+  {% assign all_tags = site.my_tags | sort: "tagname" %}
+  {% assign all_uuids = all_tags | map: "uuid" %}
+  {% for uuid in include.tags %}
+    {% if all_uuids contains uuid %}
+    {% else %}
+      <li><a title="Broken link. Please report!" class="broken"><span class="badge">{{ uuid }}</span></a></li>
+    {% endif %}
+  {% endfor %}
+  {% for tag in all_tags %}
+    {% if include.tags contains tag.uuid %}
+      <li><a href="{{ site.baseurl | append: tag.url }}"><span class="badge">{{ tag.tagname }}</span></a></li>
+    {% endif %}
   {% endfor %}
 </ul>

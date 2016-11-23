@@ -252,6 +252,8 @@ code {
 code {
     padding: 1px 5px;
     color: #aaa;
+    font-family: $font-family-monospace;
+    line-height: 0.67 * $line-height-base;
 }
 
 pre {

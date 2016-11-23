@@ -1,0 +1,39 @@
+<footer class="site-footer">
+
+  <div class="wrapper-static">
+
+    <h2 class="footer-heading">{{ site.title }}</h2>
+
+    <div class="footer-col-wrapper-static">
+      <div class="footer-col-static footer-col-1-static">
+        <ul class="social-media-list">
+          {% if site.github_username %}
+          <li>
+            {% if site.github_project %}
+              {% include icon-github-project.html username=site.github_username project=site.github_project %}
+            {% else %}
+              {% include icon-github.html username=site.github_username %}
+            {% endif %}
+          </li>
+          {% endif %}
+
+          {% if site.twitter_username %}
+          <li>
+            {% include icon-twitter.html username=site.twitter_username %}
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <div class="footer-col-static footer-col-2-static">
+      </div>
+
+      <div class="footer-col-static footer-col-3-static">
+        <p>{{ site.description }}</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+

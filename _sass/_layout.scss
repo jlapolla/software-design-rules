@@ -135,32 +135,70 @@
     margin-left: 0;
 }
 
-.footer-col-wrapper {
+.footer-col-wrapper-static {
     font-size: 15px;
     color: contrast-lower($fg);
     margin-left: -$spacing-unit / 2;
+}
+
+.footer-col-wrapper {
+    @extend .footer-col-wrapper-static;
     @extend %clearfix;
 }
 
-.footer-col {
-    float: left;
+.footer-col-static {
     margin-bottom: $spacing-unit / 2;
     padding-left: $spacing-unit / 2;
 }
 
-.footer-col-1 {
+.footer-col {
+    @extend .footer-col-static;
+    float: left;
+}
+
+.footer-col-1-common {
     width: -webkit-calc(35% - (#{$spacing-unit} / 2));
     width:         calc(35% - (#{$spacing-unit} / 2));
 }
 
-.footer-col-2 {
+.footer-col-1-static {
+  @extend .footer-col-1-common;
+  @extend .dynamic-container;
+  display: inline-block;
+}
+
+.footer-col-1 {
+    @extend .footer-col-1-common;
+}
+
+.footer-col-2-common {
     width: -webkit-calc(20% - (#{$spacing-unit} / 2));
     width:         calc(20% - (#{$spacing-unit} / 2));
 }
 
-.footer-col-3 {
+.footer-col-2-static {
+  @extend .footer-col-2-common;
+  @extend .dynamic-container;
+  display: inline-block;
+}
+
+.footer-col-2 {
+    @extend .footer-col-2-common;
+}
+
+.footer-col-3-common {
     width: -webkit-calc(45% - (#{$spacing-unit} / 2));
     width:         calc(45% - (#{$spacing-unit} / 2));
+}
+
+.footer-col-3-static {
+  @extend .footer-col-3-common;
+  @extend .dynamic-container;
+  display: inline-block;
+}
+
+.footer-col-3 {
+    @extend .footer-col-3-common;
 }
 
 @include media-query($on-laptop) {

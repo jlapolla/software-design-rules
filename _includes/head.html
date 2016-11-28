@@ -10,22 +10,24 @@
     {% assign title = page.snippet %}
   {% elsif page.tagname %}
     {% assign title = page.tagname | append: ' tag' %}
+  {% elsif page.filename %}
+    {% assign title = page.filename %}
+  {% elsif page.language %}
+    {% assign title = page.language | append: ' code' %}
   {% endif %}
 
-  {% if title %}
-    <title>{{ title | strip_html | newline_to_br | replace: '<br />', ' ' | strip_newlines | strip | truncate: 160 }}</title>
-  {% endif %}
+  <title>{{ title | strip_html | newline_to_br | replace: '<br />', ' ' | strip_newlines | strip | truncate: 160 }}</title>
 
   {% assign description = site.description %}
   {% if page.description %}
     {% assign description = page.description %}
+  {% elsif page.tagname %}
+    {% assign description = 'List of all design rules tagged "TAGNAME" on this site.' | replace: "TAGNAME", page.tagname | escape_once %}
   {% elsif page.excerpt %}
     {% assign description = page.excerpt %}
   {% endif %}
 
-  {% if description %}
-    <meta name="description" content="{{ description | strip_html | newline_to_br | replace: '<br />', ' ' | strip_newlines | strip | truncate: 160 }}">
-  {% endif %}
+  <meta name="description" content="{{ description | strip_html | newline_to_br | replace: '<br />', ' ' | strip_newlines | strip | truncate: 160 }}">
 
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">

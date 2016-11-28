@@ -3,8 +3,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.title %}{{ page.title }}{% elsif page.snippet %}{{ page.snippet }}{% elsif page.tagname %}{{ page.tagname }} tag{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{% if page.description %}{{ page.description | strip_newlines }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | newline_to_br | replace: '<br />', ' ' | strip_newlines | strip | truncate: 160 }}{% else %}{{ site.description | strip_newlines | strip }}{% endif %}">
+  {% assign title = site.title %}
+  {% if page.title %}
+    {% assign title = page.title %}
+  {% elsif page.snippet %}
+    {% assign title = page.snippet %}
+  {% elsif page.tagname %}
+    {% assign title = page.tagname | append: ' tag' %}
+  {% endif %}
+
+  {% if title %}
+    <title>{{ title | strip_html | newline_to_br | replace: '<br />', ' ' | strip_newlines | strip | truncate: 160 }}</title>
+  {% endif %}
+
+  {% assign description = site.description %}
+  {% if page.description %}
+    {% assign description = page.description %}
+  {% elsif page.excerpt %}
+    {% assign description = page.excerpt %}
+  {% endif %}
+
+  {% if description %}
+    <meta name="description" content="{{ description | strip_html | newline_to_br | replace: '<br />', ' ' | strip_newlines | strip | truncate: 160 }}">
+  {% endif %}
 
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">

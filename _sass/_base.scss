@@ -375,3 +375,66 @@ pre {
 .tiny {
   font-size: $font-size-sm;
 }
+
+/**
+ * Tables
+ */
+
+div.table {
+
+  @extend %vertical-rhythm;
+
+  border: 1px solid contrast-higher($bg);
+  border-radius: 3px;
+  background-color: contrast-high($bg);
+  padding-left: 12px - $spacing-unit / 4;
+  padding-right: 12px - $spacing-unit / 4;
+  padding-top: 8px - $spacing-unit / 8;
+  padding-bottom: 8px - $spacing-unit / 8;
+  overflow-x: auto;
+
+  table {
+
+    border-radius: 3px;
+    overflow: hidden;
+
+    > tbody {
+
+      > tr {
+
+        > td, th {
+
+          padding-left: $spacing-unit / 4;
+          padding-right: $spacing-unit / 4;
+          padding-top: $spacing-unit / 8;
+          padding-bottom: $spacing-unit / 8;
+
+          &.right {
+
+            text-align: right;
+          }
+
+          &.center {
+
+            text-align: center;
+          }
+
+          &.highlight1 {
+
+            background-color: contrast-lower($color-heading-base);
+          }
+
+          &.highlight2 {
+
+            background-color: contrast-lower($color-highlight-base);
+          }
+
+          &.highlight3 {
+
+            background-color: contrast-lower($color-link-base);
+          }
+        }
+      }
+    }
+  }
+}

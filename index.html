@@ -10,11 +10,16 @@ layout: default
 
   <ul class="undercover separator">
     {% for rule in site.rules %}
-      <li>
-        <a href="{{ site.baseurl | append: rule.url }}" class="undercover">
-          <blockquote><p>{{ rule.snippet }}</p></blockquote>
-        </a>
-      </li>
+      {% if rule.tags contains "33623a95-ab93-4db4-a4f2-3164018777e3"
+      or rule.tags contains "ecbd0f2f-1595-478f-a011-64a4f66e6e22"
+      or rule.tags contains "0ca29a0e-6bd7-4181-a3ad-574a79ff83fc" %}
+      {% else %}
+        <li>
+          <a href="{{ site.baseurl | append: rule.url }}" class="undercover">
+            <blockquote><p>{{ rule.snippet }}</p></blockquote>
+          </a>
+        </li>
+      {% endif %}
     {% endfor %}
   </ul>
 

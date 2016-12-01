@@ -419,6 +419,11 @@ div.table {
             text-align: center;
           }
 
+          &.left {
+
+            text-align: left;
+          }
+
           &.highlight1 {
 
             background-color: contrast-lower($color-heading-base);

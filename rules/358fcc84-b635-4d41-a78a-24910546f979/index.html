@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+
+  <title>"specification" (mathematical definition)</title>
+
+  
+  
+
+  <meta name="description" content="The specification r ∈ Spec of a software unit sw ∈ Sw is a function from the set of all states St to the set of all behaviors Bh.">
+
+  <link rel="stylesheet" href="/software-design-rules/css/main.css">
+  <link rel="canonical" href="https://jlapolla.github.io/software-design-rules/rules/358fcc84-b635-4d41-a78a-24910546f979/">
+  <link rel="alternate" type="application/rss+xml" title="Software Design Rules" href="https://jlapolla.github.io/software-design-rules/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/software-design-rules/">Software Design Rules</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/software-design-rules/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/software-design-rules/tags/">Tags</a>
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <p class="post-meta">358fcc84-b635-4d41-a78a-24910546f979</p>
+    <blockquote><p>"specification" (mathematical definition)
+</p></blockquote>
+    <ul class="undercover inline">
+  
+  
+  
+    
+    
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li><a href="/software-design-rules/tags/ecbd0f2f-1595-478f-a011-64a4f66e6e22/"><span class="badge">work in progress</span></a></li>
+    
+  
+</ul>
+
+  </header>
+
+  <div class="post-content">
+    <p>The specification <code class="highlighter-rouge">r ∈ Spec</code> of a software unit <code class="highlighter-rouge">sw ∈ Sw</code> is a function
+from the set of all states <code class="highlighter-rouge">St</code> to the set of all behaviors <code class="highlighter-rouge">Bh</code>.</p>
+
+<p>A correct software unit with a specification <code class="highlighter-rouge">r ∈ Spec</code> will satisfy
+behavior <code class="highlighter-rouge">r(s)</code> when executed from a state <code class="highlighter-rouge">s ∈ St</code>, provided its
+external concerns are satisfied.</p>
+
+<h2 id="construction">Construction</h2>
+
+<p>Consider the set of all behaviors <code class="highlighter-rouge">Bh</code>. Elements of <code class="highlighter-rouge">Bh</code> include:</p>
+
+<div class="table">
+  <table>
+    <tr>
+      <th class="left">Elements of Bh</th>
+    </tr>
+    <tr><td>Terminate in a state <code>{ s ∈ St | x' = y + 8 }</code></td></tr>
+    <tr><td>Log the user in</td></tr>
+    <tr><td>Throw an exception</td></tr>
+    <tr><td>Do nothing and terminate</td></tr>
+    <tr><td>Block the current thread until a state <code>{ s ∈ St | x' = y + 8 }</code> occurs</td></tr>
+    <tr><td>Loop forever</td></tr>
+    <tr><td>Shut down the computer</td></tr>
+    <tr><td>Corrupt the operating system</td></tr>
+    <tr><td>Move the car into the right lane</td></tr>
+    <tr><td>Move the Mars rover forward 1 meter</td></tr>
+    <tr><td>Put the missile on an intercept trajectory</td></tr>
+    <tr><td>...</td></tr>
+  </table>
+</div>
+
+<p><em>Aside: <code class="highlighter-rouge">x'</code> denotes the value of variable <code class="highlighter-rouge">x</code> after the software unit
+executes. <code class="highlighter-rouge">y</code> denotes the value of variable <code class="highlighter-rouge">y</code> before the software unit
+executes.</em></p>
+
+<p>The set of all states <code class="highlighter-rouge">St</code> is defined in <a href="/software-design-rules/rules/d1e86266-6e71-4e28-94b8-c39142f5b4a9/" title="&quot;state&quot; (mathematical definition) ">d1e86266</a>.</p>
+
+<p>The set of all specifications <code class="highlighter-rouge">Spec</code> is the set of all functions from
+<code class="highlighter-rouge">St</code> to <code class="highlighter-rouge">Bh</code>. <code class="highlighter-rouge">Spec</code> is a subset of the cartesian product of <code class="highlighter-rouge">St</code> and
+<code class="highlighter-rouge">Bh</code>:</p>
+
+<pre>
+Spec ⊂ St × Bh
+</pre>
+
+<p>A specification <code class="highlighter-rouge">r</code> is an element of <code class="highlighter-rouge">Spec</code>.</p>
+
+<h2 id="expressing-specifications">Expressing specifications</h2>
+
+<p>Specifications are typically expressed as a table with two columns:
+state and behavior. For example, this specification describes a software
+unit that sets an integer <code class="highlighter-rouge">y</code> equal to the square of an integer <code class="highlighter-rouge">x</code>:</p>
+
+<div class="table">
+  <table>
+    <tr>
+      <th class="left">State</th>
+      <th class="left">Behavior</th>
+    </tr>
+    <tr>
+      <td><code>{ s ∈ St | (x ∈ ℤ) ∧ (y ∈ ℤ) }</code></td>
+      <td>Terminates in <code>{ s ∈ St | y' = x * x }</code></td>
+    </tr>
+  </table>
+</div>
+
+<p>Note that <a href="/software-design-rules/rules/d1e86266-6e71-4e28-94b8-c39142f5b4a9/#expressing-states" title="&quot;state&quot; (mathematical definition) ">states are specified as a set of states using set builder
+notation</a>.</p>
+
+<p>Note also that the behavior condition specifies an infinite set of
+behaviors. For example, all of the following software units obey this
+specification, yet they all have different behaviors:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">// Software unit 1
+</span><span class="n">y</span> <span class="p">=</span> <span class="n">x</span> <span class="p">*</span> <span class="n">x</span><span class="p">;</span>
+
+<span class="c1">// Software unit 2
+</span><span class="n">y</span> <span class="p">=</span> <span class="n">x</span> <span class="p">*</span> <span class="n">x</span><span class="p">;</span>
+<span class="n">x</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+<span class="c1">// Software unit 3
+</span><span class="nf">Sleep</span><span class="p">(</span><span class="m">10000</span><span class="p">);</span> <span class="c1">// Sleep for 10 seconds
+</span><span class="n">y</span> <span class="p">=</span> <span class="n">x</span> <span class="p">*</span> <span class="n">x</span><span class="p">;</span>
+
+<span class="c1">// Software unit 4
+</span><span class="nf">move_the_mars_rover_forward_1_meter</span><span class="p">();</span>
+<span class="n">y</span> <span class="p">=</span> <span class="n">x</span> <span class="p">*</span> <span class="n">x</span><span class="p">;</span></code></pre></figure>
+
+<p><em>Aside: There are additional implicit constraints on correct
+implementation behaviors. These are expressed in other rules.</em></p>
+
+<h2 id="partial-specifications">Partial specifications</h2>
+
+<p>A specification may be a partial function from <code class="highlighter-rouge">St</code> to <code class="highlighter-rouge">Bh</code>. Consider
+the following partial specification:</p>
+
+<div class="table">
+  <table>
+    <tr>
+      <th class="left">State</th>
+      <th class="left">Behavior</th>
+    </tr>
+    <tr>
+      <td><code>{ s ∈ St | (t = true) ∧ (x ∈ ℤ) }</code></td>
+      <td>Terminates in <code>{ s ∈ St | x' = 5 }</code></td>
+    </tr>
+  </table>
+</div>
+
+<p>If <code class="highlighter-rouge">values(t) = { true, false }</code>, then any state in <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">s</span><span class="w"> </span><span class="err">∈</span><span class="w"> </span><span class="err">St</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">t</span><span class="w"> </span><span class="err">=</span><span class="w">
+</span><span class="err">false</span><span class="w"> </span><span class="p">}</span></code> is outside of the domain of the specification. The
+specification does not define a behavior for these states.</p>
+
+<p><em>Aside: <code class="highlighter-rouge">values</code> is a function defined in <a href="/software-design-rules/rules/d1e86266-6e71-4e28-94b8-c39142f5b4a9/#construction" title="&quot;state&quot; (mathematical definition) ">d1e86266</a>.</em></p>
+
+<h2 id="total-specifications">Total specifications</h2>
+
+<p>A specification may be a total function from <code class="highlighter-rouge">St</code> to <code class="highlighter-rouge">Bh</code>. Consider the
+following total specification:</p>
+
+<div class="table">
+  <table>
+    <tr>
+      <th class="left">State</th>
+      <th class="left">Behavior</th>
+    </tr>
+    <tr>
+      <td><code>{ s ∈ St | (t = true) ∧ (x ∈ ℤ) }</code></td>
+      <td>Terminates in <code>{ s ∈ St | x' = 5 }</code></td>
+    </tr>
+    <tr>
+      <td><code>{ s ∈ St | (t = false) ∧ (x ∈ ℤ) }</code></td>
+      <td>Terminates in <code>{ s ∈ St | x' = 0 }</code></td>
+    </tr>
+  </table>
+</div>
+
+<p>If <code class="highlighter-rouge">values(t) = { true, false }</code> and <code class="highlighter-rouge">values(x) = ℤ</code>, then every state
+in <code class="highlighter-rouge">St</code> is within the domain of the specification.</p>
+
+<h2 id="inconsistent-specifications">Inconsistent specifications</h2>
+
+<p>An inconsistent specification is a relation from <code class="highlighter-rouge">St</code> to <code class="highlighter-rouge">Bh</code> which is
+not a function.</p>
+
+<p><em>Aside: Technically, “inconsistent specification” is an abuse of the
+language; an inconsistent specification is not a specification at all!
+Specifications are members of <code class="highlighter-rouge">Spec</code>, and members of <code class="highlighter-rouge">Spec</code> are always
+functions.</em></p>
+
+<p>Consider the following inconsistent specification:</p>
+
+<div class="table">
+  <table>
+    <tr>
+      <th class="left">State</th>
+      <th class="left">Behavior</th>
+    </tr>
+    <tr>
+      <td><code>{ s ∈ St | (t = true) ∧ (x ∈ ℤ) }</code></td>
+      <td>Terminates in <code>{ s ∈ St | x' = 5 }</code></td>
+    </tr>
+    <tr>
+      <td><code>{ s ∈ St | (t = true) ∧ (x ∈ ℤ) }</code></td>
+      <td>Terminates in <code>{ s ∈ St | x' = 0 }</code></td>
+    </tr>
+  </table>
+</div>
+
+<p>The specification defines two incompatible behaviors for <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">s</span><span class="w"> </span><span class="err">∈</span><span class="w"> </span><span class="err">St</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">(t</span><span class="w">
+</span><span class="err">=</span><span class="w"> </span><span class="err">true)</span><span class="w"> </span><span class="err">∧</span><span class="w"> </span><span class="err">(x</span><span class="w"> </span><span class="err">∈</span><span class="w"> </span><span class="err">ℤ)</span><span class="w"> </span><span class="p">}</span></code>. The conjunction of the two behaviors results in a
+contradiction, so they cannot be accomplished by the same execution of
+the software unit. Therefore, the specification is not a function, and
+it is not a member of <code class="highlighter-rouge">Spec</code>.</p>
+
+<p>Note that the following specification is consistent:</p>
+
+<div class="table">
+  <table>
+    <tr>
+      <th class="left">State</th>
+      <th class="left">Behavior</th>
+    </tr>
+    <tr>
+      <td><code>{ s ∈ St | (t = true) ∧ (x ∈ ℤ) }</code></td>
+      <td>Terminates in <code>{ s ∈ St | x' = 5 }</code></td>
+    </tr>
+    <tr>
+      <td><code>{ s ∈ St | (x ∈ ℤ) }</code></td>
+      <td>Terminates in <code>{ s ∈ St | x' &gt; 0 }</code></td>
+    </tr>
+  </table>
+</div>
+
+<p>The specification defines two behaviors for <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">s</span><span class="w"> </span><span class="err">∈</span><span class="w"> </span><span class="err">St</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">(t</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">true)</span><span class="w"> </span><span class="err">∧</span><span class="w"> </span><span class="err">(x</span><span class="w">
+</span><span class="err">∈</span><span class="w"> </span><span class="err">ℤ)</span><span class="w"> </span><span class="p">}</span></code>. However, the two behaviors are compatible. In other words, the
+conjunction of the two behaviors does not result in a contradiction, so
+they actually represent a single behavior. Therefore the specification
+is a function, and it is a member of <code class="highlighter-rouge">Spec</code>.</p>
+
+<p>An equivalent specification, expressed more clearly with disjoint sets
+of states, is:</p>
+
+<div class="table">
+  <table>
+    <tr>
+      <th class="left">State</th>
+      <th class="left">Behavior</th>
+    </tr>
+    <tr>
+      <td><code>{ s ∈ St | (t = true) ∧ (x ∈ ℤ) }</code></td>
+      <td>Terminates in <code>{ s ∈ St | x' = 5 }</code></td>
+    </tr>
+    <tr>
+      <td><code>{ s ∈ St | (t = false) ∧ (x ∈ ℤ) }</code></td>
+      <td>Terminates in <code>{ s ∈ St | x' &gt; 0 }</code></td>
+    </tr>
+  </table>
+</div>
+
+<h2 id="checking-consistency">Checking consistency</h2>
+
+<p>A written specification is consistent when the specification it
+represents is a function from <code class="highlighter-rouge">St</code> to <code class="highlighter-rouge">Bh</code>. How do we check that this is
+the case?</p>
+
+<p>The format of a written specification <code class="highlighter-rouge">wr</code> is a relation from <code class="highlighter-rouge">ℙ(St)</code> to
+<code class="highlighter-rouge">ℙ(Bh)</code>, where <code class="highlighter-rouge">ℙ(X)</code> denotes the power set of <code class="highlighter-rouge">X</code>.</p>
+
+<p>A written specification <code class="highlighter-rouge">wr</code> is consistent when:</p>
+
+<pre>
+∀〈a, b〉,〈c, d〉∈ wr ((a ∩ c = ∅) ∨ (b ⊃ d) ∨ (d ⊃ b))
+</pre>
+
+<h2 id="to-do">To do</h2>
+
+<ul>
+  <li>Add external links</li>
+</ul>
+
+<h1 id="old-content">Old content</h1>
+
+<h2 id="behaviors-as-predicates">Behaviors as predicates</h2>
+
+<p>In the specification above, “terminates with y = 3” represents an
+infinite number of possible behaviors. For example, all of the following
+code units terminate with <em>y</em> = <em>3</em>:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">// Code unit 1
+</span><span class="n">y</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+
+<span class="c1">// Code unit 2
+</span><span class="nf">Sleep</span><span class="p">(</span><span class="m">10000</span><span class="p">);</span> <span class="c1">// Sleep for 10 seconds
+</span><span class="n">y</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+
+<span class="c1">// Code unit 3
+</span><span class="n">t</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span> <span class="c1">// Set t
+</span><span class="n">z</span> <span class="p">=</span> <span class="n">y</span> <span class="p">-</span> <span class="m">1000</span><span class="p">;</span> <span class="c1">// Set z
+</span><span class="n">y</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+
+<span class="c1">// Code unit 4
+</span><span class="nf">InitiateBankAccountTransfer</span><span class="p">();</span>
+<span class="n">y</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+
+<span class="cm">/* et cetera... */</span></code></pre></figure>
+
+<p>Of course, it is impossible for us to specify every detail of a
+behavior. So we list the predicate “terminates with y = 3” as a
+constraint on the allowed behaviors, with the understanding that it is
+shorthand for the set of all behaviors where “terminates with y = 3” is
+true. In set notation:</p>
+
+<pre>
+{b ∈ B | terminates(b) ∧ y = 3}
+</pre>
+
+<p><em>(There are additional, implicit constraints on behaviors defined in
+specifications. These are given in other rules.)</em></p>
+
+<h2 id="total-specifications-1">Total specifications</h2>
+
+<p>A total specification is a specification that defines the code unit’s
+behavior for all possible initial states.</p>
+
+<p>For example, if <em>t</em> is a boolean variable, then this is a total
+specification:</p>
+
+<div class="table">
+  <table>
+    <tr>
+      <th class="left">Initial State</th>
+      <th class="left">Behavior</th>
+    </tr>
+    <tr>
+      <td>t = false</td>
+      <td>terminates with y = 0</td>
+    </tr>
+    <tr>
+      <td>t = true</td>
+      <td>terminates with y = 3</td>
+    </tr>
+  </table>
+</div>
+
+<p>For any state we invent, <em>t</em> is either going to be true or false, since
+those are the only two values the boolean variable <em>t</em> can have.</p>
+
+<p>Even if we do not explicitly list <em>t</em> in our state predicate, <em>t</em> still
+has either a true or false value in our state. For example, consider the
+state predicate:</p>
+
+<pre>
+z = 82
+</pre>
+
+<p>There are an infinite number of possible states which satisfy this
+predicate:</p>
+
+<div class="table">
+  <table>
+    <tr>
+      <th class="left">State</th>
+      <th class="left">z = 82</th>
+    </tr>
+    <tr>
+      <td>(z = 82) ∧ (t = false)</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>(z = 82) ∧ (y = 37) ∧ (t = true)</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>(z = 82) ∧ (y = 705) ∧ (t = false)</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>(z = 82) ∧ (system_has_available_memory) ∧ (t = false)</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>(z = 82) ∧ ¬(system_has_available_memory) ∧ (t = false)</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>(z = 82) ∧ (y = 37) ∧ (the_sky_is_blue) ∧ (t = true)</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>(z = 82) ∧ (y = 37) ∧ (the_sky_is_red) ∧ (t = false)</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>(z = 82) ∧ ...</td>
+      <td>yes</td>
+    </tr>
+  </table>
+</div>
+
+<p>Notice that in each state, <em>t</em> has a value, regardless of whether or not
+we choose to include the value of <em>t</em> in our description of the state.</p>
+
+<p>Just because the state predicate says nothing about the value of <em>t</em>, it
+does not mean <em>t</em> has no value in states which satisfy the predicate.
+Similarly, the state predicate <em>z</em> = 82 says nothing about the color of
+the sky, but this does not mean the sky has no color.</p>
+
+<h2 id="partial-specifications-1">Partial specifications</h2>
+
+<p>A partial specification is a specification that leaves the behavior
+undefined for some set of initial states.</p>
+
+<p>For example, if <em>x</em> is an integer variable, then this is a partial
+specification:</p>
+
+<div class="table">
+  <table>
+    <tr>
+      <th class="left">Initial State</th>
+      <th class="left">Behavior</th>
+    </tr>
+    <tr>
+      <td>(0 ≤ x) ∧ (x ≤ 5)</td>
+      <td>terminates with y = 0</td>
+    </tr>
+    <tr>
+      <td>7 ≤ x</td>
+      <td>terminates with y = 3</td>
+    </tr>
+  </table>
+</div>
+
+<p>The specification does not define a behavior for initial states where
+(<em>x</em> &lt; 0) ∨ (<em>x</em> = 6). States which satisfy this predicate are outside
+of the specification domain.</p>
+
+<h2 id="inconsistent-specifications-1">Inconsistent specifications</h2>
+
+<p>An inconsistent specification is a specification that defines more than
+one behavior for a given initial state.</p>
+
+<p>For example, if <em>x</em> is an integer variable, then this is an inconsistent
+specification:</p>
+
+<div class="table">
+  <table>
+    <tr>
+      <th class="left">Initial State</th>
+      <th class="left">Behavior</th>
+    </tr>
+    <tr>
+      <td>(0 ≤ x) ∧ (x ≤ 5)</td>
+      <td>terminates with y = 0</td>
+    </tr>
+    <tr>
+      <td>5 ≤ x</td>
+      <td>terminates with y = 3</td>
+    </tr>
+  </table>
+</div>
+
+<p>In states where <em>x</em> = 5, the specification defines two behaviors: one
+where <em>y</em> = 0, and one where <em>y</em> = 3. Of course, <em>y</em> cannot equal both 0
+and 3.</p>
+
+<p>Inconsistent specifications can be harder to spot when more than one
+variable is involved. Consider the following specification, where <em>t</em> is
+a boolean variable and <em>x</em> is an integer variable:</p>
+
+<div class="table">
+  <table>
+    <tr>
+      <th class="left">Initial State</th>
+      <th class="left">Behavior</th>
+    </tr>
+    <tr>
+      <td>(0 ≤ x) ∧ (x ≤ 5)</td>
+      <td>terminates with y = 0</td>
+    </tr>
+    <tr>
+      <td>t = false</td>
+      <td>terminates with y = 3</td>
+    </tr>
+  </table>
+</div>
+
+<p>The specification defines two behaviors for any initial state which
+satisfies the predicate (0 ≤ <em>x</em>) ∧ (<em>x</em> ≤ 5) ∧ (<em>t</em> = false).</p>
+
+<p>Mathematically, for a specification which maps state predicates <em>P</em> and
+<em>Q</em> to different behaviors, the following must be true for the
+specification to be consistent:</p>
+
+<pre>
+{s ∈ St | P(s)} ∩ {t ∈ St | Q(t)} = ∅
+</pre>
+
+<h2 id="todo">TODO</h2>
+
+<ul>
+  <li>Add external links.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Software Design Rules</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            
+              <span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><a href="https://github.com/jlapolla/software-design-rules"><span class="username">jlapolla/software-design-rules</span></a>
+
+            
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Design rules for effective development.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

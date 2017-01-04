@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+
+  <title>"state" (mathematical definition)</title>
+
+  
+  
+
+  <meta name="description" content="A state s is an n-tuple which is an element of the set of all states St.">
+
+  <link rel="stylesheet" href="/software-design-rules/css/main.css">
+  <link rel="canonical" href="https://jlapolla.github.io/software-design-rules/rules/d1e86266-6e71-4e28-94b8-c39142f5b4a9/">
+  <link rel="alternate" type="application/rss+xml" title="Software Design Rules" href="https://jlapolla.github.io/software-design-rules/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/software-design-rules/">Software Design Rules</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/software-design-rules/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/software-design-rules/tags/">Tags</a>
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <p class="post-meta">d1e86266-6e71-4e28-94b8-c39142f5b4a9</p>
+    <blockquote><p>"state" (mathematical definition)
+</p></blockquote>
+    <ul class="undercover inline">
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+      <li><a href="/software-design-rules/tags/6fc1011b-4e81-4d8d-aaa1-8ef67b90f27d/"><span class="badge">any language</span></a></li>
+    
+  
+    
+  
+    
+      <li><a href="/software-design-rules/tags/475a05b6-2880-46d1-ae6c-787bccc406f1/"><span class="badge">definition</span></a></li>
+    
+  
+    
+  
+    
+  
+    
+      <li><a href="/software-design-rules/tags/21b3b1f1-db5b-4591-91a7-5cfad432be71/"><span class="badge">mathematical</span></a></li>
+    
+  
+    
+  
+    
+  
+</ul>
+
+  </header>
+
+  <div class="post-content">
+    <p>A state <code class="highlighter-rouge">s</code> is an <a href="https://en.wikipedia.org/wiki/Tuple">n-tuple</a> which is an element of the <a href="https://en.wikipedia.org/wiki/Set_(mathematics)">set</a>
+of all states <code class="highlighter-rouge">St</code>.</p>
+
+<h2 id="construction">Construction</h2>
+
+<p>Consider the set of all variables <code class="highlighter-rouge">Var</code>. Elements of <code class="highlighter-rouge">Var</code> include:</p>
+
+<div class="table">
+  <table>
+    <tr>
+      <th colspan="2" class="left">Elements of Var</th>
+    </tr>
+    <tr>
+      <th class="left">Symbol</th>
+      <th class="left">Description</th>
+    </tr>
+    <tr>
+      <td class="center"><em>x</em></td>
+      <td>The variable <em>x</em></td>
+    </tr>
+    <tr>
+      <td class="center"><em>s<sub>i</sub></em></td>
+      <td>The stack pointer of running program <em>i</em></td>
+    </tr>
+    <tr>
+      <td class="center"><em>m<sub>i</sub></em></td>
+      <td>The available memory of operating system <em>i</em></td>
+    </tr>
+    <tr>
+      <td class="center"><em>t<sub>i</sub></em></td>
+      <td>The temperature of CPU <em>i</em></td>
+    </tr>
+    <tr>
+      <td class="center"><em>p<sub>i</sub></em></td>
+      <td>The position of airplane <em>i</em></td>
+    </tr>
+    <tr>
+      <td class="center"><em>w<sub>chicago</sub></em></td>
+      <td>The current weather conditions in Chicago, IL</td>
+    </tr>
+    <tr>
+      <td class="center"><em>wf<sub>chicago</sub></em></td>
+      <td>The weather forecast for Chicago, IL</td>
+    </tr>
+    <tr>
+      <td class="center"><em>h<sub>i,whitney</sub></em></td>
+      <td>The height of Mount Whitney at time <em>i</em></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </table>
+</div>
+
+<p><em>Aside: Some of these variables seem irrelevant to software. However,
+this is not the case. Every variable is
+<a href="#significant-variables">significant</a> to some software unit, and all
+variables are <a href="#relevant-variables">relevant</a> to every software unit.</em></p>
+
+<p>Note that <code class="highlighter-rouge">Var</code> is an infinite set.</p>
+
+<p>The <code class="highlighter-rouge">values</code> <a href="http://mathworld.wolfram.com/Function.html">function</a> is a <a href="http://mathworld.wolfram.com/TotalFunction.html">total function</a>
+which maps each variable <code class="highlighter-rouge">v ∈ Var</code> to the set of possible values of <code class="highlighter-rouge">v</code>.
+For example, if <code class="highlighter-rouge">x</code> is a boolean variable in a program, then <code class="highlighter-rouge">values(x)
+= { true, false }</code>.</p>
+
+<p>The set of all states <code class="highlighter-rouge">St</code> is the <a href="https://en.wikipedia.org/wiki/Cartesian_product">cartesian product</a>
+of the values of all variables in <code class="highlighter-rouge">Var</code>:</p>
+
+<pre>
+St = values(x) × values(s<sub>i</sub>) × values(m<sub>i</sub>) × ...
+</pre>
+
+<p>A state is an n-tuple (where n is the <a href="https://en.wikipedia.org/wiki/Cardinality">cardinality</a> of
+<code class="highlighter-rouge">Var</code>, which is infinite) which is an element of <code class="highlighter-rouge">St</code>.</p>
+
+<h2 id="expressing-states">Expressing states</h2>
+
+<p>Since a state is an n-tuple where n is infinite, we cannot explicitly
+denote a state with a finite number of characters. If we attempted to
+explicitly denote a state, it would look like:</p>
+
+<pre>
+〈 x = false, s<sub>i</sub> = 0x0ea8, m<sub>i</sub> = 2.35 GiB, ... 〉
+</pre>
+
+<p>Instead, we use <a href="https://en.wikipedia.org/wiki/Set-builder_notation">set builder notation</a> to denote
+<a href="https://en.wikipedia.org/wiki/Subset">subsets</a> of <code class="highlighter-rouge">St</code>. For example, the set of all states where <code class="highlighter-rouge">x =
+false</code> is denoted by:</p>
+
+<pre>
+{ s ∈ St | x = false }
+</pre>
+
+<p>Every subset of <code class="highlighter-rouge">St</code> expressed in set builder notation is infinite,
+since we cannot hope to constrain every variable in <code class="highlighter-rouge">Var</code>. The only
+exception is the <a href="https://en.wikipedia.org/wiki/Empty_set">empty set</a> <code class="highlighter-rouge">∅</code>, which results when we use a
+<a href="https://en.wikipedia.org/wiki/Predicate_(mathematical_logic)">predicate</a> that is always false. For example:</p>
+
+<pre>
+{ s ∈ St | (x = false) ∧ (x = true) } = ∅
+</pre>
+
+<h2 id="significant-variables">Significant variables</h2>
+
+<p>A variable is significant to a software unit if the software unit could
+potentially use the variable to improve its quality of service. The
+relative significance of variables is subjective.</p>
+
+<p>A <code class="highlighter-rouge">significance</code> function is a total function from <code class="highlighter-rouge">Var × Sw</code> to <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">x</span><span class="w"> </span><span class="err">∈</span><span class="w">
+</span><span class="err">ℝ</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">x</span><span class="w"> </span><span class="err">&gt;</span><span class="w"> </span><span class="err">0</span><span class="w"> </span><span class="p">}</span></code>, where <code class="highlighter-rouge">Sw</code> is the set of all software units:</p>
+
+<pre>
+significance ∈ (Var × Sw) × { x ∈ ℝ | x &gt; 0 }
+</pre>
+
+<p>For example, the variables <em>p<sub>i</sub></em>, <em>w<sub>chicago</sub></em>,
+<em>wf<sub>chicago</sub></em>, and <em>h<sub>i,whitney</sub></em> are more significant
+to air traffic control software than they are to video encoding
+software.</p>
+
+<p>The variable <em>p<sub>i</sub></em> is a property of the physical world, a
+variable which software cannot directly access. However, software can
+directly access an abstract representation of <em>p<sub>i</sub></em>, and we
+can use sensors to update the abstract representation of
+<em>p<sub>i</sub></em>. If our <em>p<sub>i</sub></em> sensor is faulty, the abstract
+representation available to our software may differ from the actual
+value of <em>p<sub>i</sub></em>.</p>
+
+<p>The software designer decides which variables are significant enough to
+include in the software. A software designer would not even consider
+creating air traffic control software without access to <em>p<sub>i</sub></em>;
+the quality of service provided by the air traffic control software
+would be terrible without <em>p<sub>i</sub></em>. However, the variable
+<em>h<sub>i,whitney</sub></em> is arguably less significant, and a designer may
+choose to ignore <em>h<sub>i,whitney</sub></em> for simplistic air traffic
+control software.</p>
+
+<p>Every variable <code class="highlighter-rouge">v ∈ Var</code> is significant to some software unit <code class="highlighter-rouge">sw ∈ Sw</code>:</p>
+
+<pre>
+∀x ∈ ℝ, v ∈ Var (∃sw significance(v, sw) &gt; x)
+</pre>
+
+<h2 id="relevant-variables">Relevant variables</h2>
+
+<p>A variable is relevant to a software unit in a particular state if it
+can affect the behavior of the software unit in that state.</p>
+
+<p>More precisely: a variable <code class="highlighter-rouge">v ∈ Var</code> is relevant to a software unit <code class="highlighter-rouge">sw
+∈ Sw</code> in a state <code class="highlighter-rouge">s ∈ St</code> if there exists an alternative state <code class="highlighter-rouge">s' ∈
+St</code>, where <code class="highlighter-rouge">s'</code> differs from <code class="highlighter-rouge">s</code> only in the value of <code class="highlighter-rouge">v</code>, which would
+result in a different behavior for <code class="highlighter-rouge">sw</code>.</p>
+
+<p><code class="highlighter-rouge">relevant</code> is a total function from <code class="highlighter-rouge">Var × St × Sw</code> to <code class="highlighter-rouge">𝔹</code>:</p>
+
+<pre>
+relevant ∈ (Var × St × Sw) × 𝔹
+</pre>
+
+<p>For example, if you are using video encoding software on your home
+computer in Chicago, IL, then an alternative state <code class="highlighter-rouge">s'</code> with a new value
+of <em>h<sub>i,whitney</sub></em> will never alter the behavior of your video
+encoding software. In this state, <em>h<sub>i,whitney</sub></em> is not
+relevant to the video encoding software.</p>
+
+<p>However, if you are in an airplane flying over Mount Whitney, then an
+alternative state <code class="highlighter-rouge">s'</code> with a higher value of <em>h<sub>i,whitney</sub></em>
+can affect the behavior of your video encoding software if your airplane
+is about to crash into Mount Whitney and destroy the hardware that the
+video encoding software is running on. In this state,
+<em>h<sub>i,whitney</sub></em> is relevant to the video encoding software.</p>
+
+<p>For every variable <code class="highlighter-rouge">v ∈ Var</code> and every software unit <code class="highlighter-rouge">sw ∈ Sw</code>, there
+exists a state <code class="highlighter-rouge">s ∈ St</code> in which <code class="highlighter-rouge">relevant(v, s, sw)</code>:</p>
+
+<pre>
+∀v,sw ∃s relevant(v, s, sw)
+</pre>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Software Design Rules</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            
+              <span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><a href="https://github.com/jlapolla/software-design-rules"><span class="username">jlapolla/software-design-rules</span></a>
+
+            
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Design rules for effective development.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
